@@ -1,0 +1,919 @@
+/* =========================================
+   1. VARIABLES Y CONFIGURACIÓN GENERAL
+   ========================================= */
+*, *::before, *::after {
+    box-sizing: border-box; 
+}
+
+:root {
+    --color-oro: #FFD700;       
+    --color-fondo: #050505;      
+    --color-panel: #121212;      
+    --color-texto: #ffffff;
+    --color-borde: #333333;
+    --color-rojo: #e74c3c;
+    --color-verde: #2ecc71;
+    --color-azul: #3498db;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--color-texto);
+    background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.85)), url('pesos.jpg') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+}
+
+html {
+    overflow-x: hidden; 
+    width: 100%;
+}
+
+body {
+    overflow-x: hidden; 
+    width: 100%;
+}
+
+body.modal-open {
+    overflow-y: hidden;
+    padding-right: var(--scrollbar-width, 0); 
+}
+
+
+/* =========================================
+   2. HEADER (Navegación)
+   ========================================= */
+.dashboard-header {
+    background-color: rgba(0, 0, 0, 0.95);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--color-oro);
+    position: fixed;   
+    top: 0;            
+    left: 0;          
+    width: 100%;       
+    z-index: 1000;     
+    box-shadow: 0 4px 15px rgba(0,0,0,0.7); 
+    box-sizing: border-box;
+}
+
+.dashboard-header h1 {
+    font-family: 'Oswald', sans-serif;
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--color-oro);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.btn-logout {
+    background-color: transparent;
+    color: var(--color-oro);
+    border: 1px solid var(--color-oro);
+    padding: 8px 15px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-logout:hover {
+    background-color: var(--color-oro);
+    color: #000;
+}
+
+/* =========================================
+   3. CONTENIDO PRINCIPAL Y TÍTULO
+   ========================================= */
+.dashboard-content {
+    padding: 40px 20px;
+    max-width: 1400px; 
+    margin: 0 auto;
+}
+
+.titulo-seccion {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.titulo-seccion h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+    margin: 90px 0 30px 0; 
+    padding: 0 20px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.linea-decorativa {
+    width: 80px;
+    height: 3px;
+    background-color: var(--color-oro);
+    margin: 0 auto 15px auto;
+}
+
+.contador-registros {
+    font-size: 1.1rem;
+    color: #ffffff; 
+    font-weight: 300;
+}
+
+.contador-registros strong {
+    color: var(--color-oro);
+}
+
+.no-data {
+    text-align: center;
+    padding: 40px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 8px;
+    color: #ccc;
+}
+
+/* =========================================
+   4. TABLA RESPONSIVA 
+   ========================================= */
+
+.table-wrapper {
+    background: rgba(18, 18, 18, 0.9); 
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border: 1px solid #333;
+    padding: 20px;
+    overflow: hidden; 
+}
+
+table.inscripciones-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+.inscripciones-table th {
+    background-color: rgba(255, 215, 0, 0.1); 
+    color: var(--color-oro);
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 15px;
+    text-align: left;
+    border-bottom: 2px solid var(--color-borde);
+}
+
+.inscripciones-table td {
+    padding: 15px;
+    border-bottom: 1px solid var(--color-borde);
+    vertical-align: middle;
+    color: #e0e0e0;
+}
+
+.inscripciones-table td,
+.inscripciones-table td strong,
+.inscripciones-table td div,
+.inscripciones-table td small {
+    font-size: 0.95rem; 
+    font-weight: normal; 
+    color: #ffffff; 
+}
+
+.email-estilo {
+    display: block;
+    margin-bottom: 8px;
+    color: #ffffff;
+}
+
+.telefono-estilo {
+    background: rgba(255, 215, 0, 0.15);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-top: 8px;
+    font-weight: 500;
+}
+
+.plan-estilo {
+    background: #333; 
+    padding: 4px 8px;
+    border-radius: 4px;
+    display: inline-block;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.objetivo-estilo {
+    display: block;
+    color: #ffffff;
+    font-size: 0.95rem;
+    margin-top: 8px;
+}
+
+.btn-accion {
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 700;
+    transition: 0.3s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    text-decoration: none;
+    margin: 2px 0;
+}
+
+.btn-ver-imagen { 
+    background-color: transparent; 
+    border: 1px solid var(--color-azul); 
+    color: var(--color-azul); 
+}
+.btn-ver-imagen:hover { 
+    background-color: var(--color-azul); 
+    color: white; 
+}
+
+.btn-ver-rutina { 
+    background-color: transparent; 
+    border: 1px solid var(--color-oro); 
+    color: var(--color-oro); 
+}
+.btn-ver-rutina:hover { 
+    background-color: var(--color-oro); 
+    color: black; 
+}
+
+.btn-crear { 
+    background-color: transparent; 
+    border: 1px solid var(--color-verde); 
+    color: var(--color-verde); 
+}
+.btn-crear:hover { 
+    background-color: var(--color-verde); 
+    color: white; 
+}
+
+.btn-eliminar { 
+    background-color: transparent; 
+    border: 1px solid var(--color-rojo); 
+    color: var(--color-rojo); 
+}
+.btn-eliminar:hover { 
+    background-color: var(--color-rojo); 
+    color: white; 
+}
+
+td[data-label="Documentos"] {
+    text-align: center;
+}
+
+td[data-label="Documentos"] div {
+    display: flex;
+    flex-direction: column; 
+    gap: 8px;
+    align-items: center; 
+}
+
+.sin-documentos {
+    color: #777;
+    font-style: italic;
+}
+
+.rutina-pendiente {
+    color: #777;
+    font-style: italic;
+}
+
+/* =========================================
+   5. MODALES 
+   ========================================= */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 2000; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: hidden; 
+    background-color: rgba(0,0,0,0.95);
+    backdrop-filter: blur(5px);
+}
+
+.modal-imagen-container {
+    position: relative;
+    width: 90%;
+    max-width: 800px;
+    margin: 5% auto;
+    background-color: #1a1a1a;
+    border-radius: 8px;
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
+    border: 1px solid #444;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    max-height: 90vh;
+    overflow: hidden;
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--color-oro);
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 2001;
+    background: rgba(0,0,0,0.8);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-oro);
+}
+.modal-close:hover { 
+    color: white; 
+    background: var(--color-oro);
+    border-color: white;
+}
+
+#imagen-modal {
+    max-width: 100%;
+    max-height: 70vh;
+    height: auto;
+    border-radius: 4px;
+    display: block;
+    margin: 0 auto;
+}
+
+.modal-content {
+    margin: 5% auto; 
+    width: 90%;
+    max-width: 600px;
+    background-color: #1a1a1a; 
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
+    border: 1px solid #444;
+    color: #fff;
+    max-height: 85vh;
+    overflow-y: auto;
+    overflow-x: hidden; 
+    position: relative;
+    box-sizing: border-box;
+}
+
+.modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: #252525;
+    border-radius: 4px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: var(--color-oro);
+    border-radius: 4px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: #ffed4e;
+}
+
+.modal-content .close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--color-oro);
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 2001;
+    background: rgba(0,0,0,0.8);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-oro);
+    margin: 0;
+    padding: 0;
+}
+
+.modal-content .close:hover { 
+    color: white; 
+    background: var(--color-oro);
+    border-color: white;
+}
+
+.modal-content h3,
+.modal-content form {
+    padding-right: 0; 
+}
+
+.modal-titulo {
+    font-family: 'Oswald', sans-serif; 
+    margin-top: 0; 
+    color: var(--color-oro); 
+    padding-right: 40px;
+}
+
+.modal-titulo span {
+    color: #ffffff;
+}
+
+.modal-titulo-rutina {
+    border-bottom: 1px solid #444; 
+    padding-bottom: 10px;
+    font-family: 'Oswald', sans-serif; 
+    margin-top: 0; 
+    color: var(--color-oro); 
+}
+
+.modal-titulo-rutina span {
+    color: #ffffff;
+}
+
+.btn-modal {
+    width: 100%;
+    padding: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 15px;
+    border: 1px solid;
+    text-decoration: none;
+    box-sizing: border-box; 
+    min-height: 44px;
+    white-space: nowrap;
+}
+
+.btn-guardar {
+    background-color: transparent;
+    border-color: var(--color-verde);
+    color: var(--color-verde);
+}
+
+.btn-guardar:hover {
+    background-color: var(--color-verde);
+    color: white;
+}
+
+.btn-eliminar-modal {
+    background-color: transparent;
+    border-color: var(--color-rojo);
+    color: var(--color-rojo);
+    font-size: 0.95rem;
+    padding: 10px 12px;
+}
+
+.btn-eliminar-modal:hover {
+    background-color: var(--color-rojo);
+    color: white;
+}
+
+.modal-content label { 
+    display: block; 
+    margin: 15px 0 5px; 
+    color: var(--color-oro); 
+    font-family: 'Oswald', sans-serif; 
+}
+
+.modal-content input[type="text"], 
+.modal-content textarea {
+    width: 100%;
+    padding: 12px;
+    background: #252525;
+    border: 1px solid #444;
+    color: white;
+    border-radius: 4px;
+    box-sizing: border-box; 
+    max-width: 100%;
+    word-wrap: break-word;
+}
+
+.modal-content textarea { 
+    resize: vertical; 
+    min-height: 100px; 
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+    max-width: 100%;
+}
+
+.modal-content input:focus, 
+.modal-content textarea:focus {
+    outline: none;
+    border-color: var(--color-oro);
+}
+
+.rutina-fecha {
+    color: #ffffff;
+    font-size: 1rem;
+    font-style: italic;
+    margin-top: 10px;
+    border-top: 1px solid #444;
+    padding-top: 10px;
+    font-weight: 500;
+    word-wrap: break-word;
+}
+
+.ver-rutina-nombre {
+    color: var(--color-oro); 
+    margin-top: 15px;
+    margin-bottom: 5px;
+    word-wrap: break-word;
+}
+
+.ver-rutina-contenido {
+    background-color: #252525; 
+    padding: 15px; 
+    border-radius: 4px; 
+    white-space: pre-wrap; 
+    font-size: 0.95em; 
+    border: 1px solid #333; 
+    color: #ddd; 
+    margin-top: 10px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+#asignacionMensaje { 
+    margin-top: 15px; 
+    text-align: center; 
+    word-wrap: break-word;
+}
+
+/* =========================================
+   6. ESTILOS ESPECÍFICOS PARA RUTINAS
+   ========================================= */
+.rutina-subtitulo {
+    color: var(--color-oro) !important;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.1rem;
+    word-wrap: break-word;
+}
+
+.rutina-descripcion {
+    color: #cccccc !important;
+    margin-top: 0;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    word-wrap: break-word;
+}
+
+.rutina-ejercicios {
+    color: #ffffff !important;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+#verRutinaAlumnoNombre,
+#alumnoNombre,
+#verRutinaFechaTexto,
+#verRutinaContenido,
+#verRutinaContenido *:not(.rutina-subtitulo) {
+    color: #ffffff !important;
+    word-wrap: break-word;
+}
+
+/* =========================================
+   7. CONTENEDOR DE BOTONES DEL MODAL 
+   ========================================= */
+.botones-contenedor-modal {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.botones-contenedor-modal .btn-modal {
+    width: 100%;
+    min-height: 44px;
+    white-space: nowrap;
+    box-sizing: border-box;
+    margin-top: 0;
+}
+
+.botones-contenedor-modal .btn-guardar,
+.botones-contenedor-modal .btn-eliminar-modal {
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+}
+
+/* MODALES RESPONSIVOS */
+@media screen and (max-width: 1024px) {
+    .inscripciones-table thead {
+        display: none;
+    }
+
+    .inscripciones-table tr {
+        display: block;
+        margin-bottom: 20px;
+        background-color: rgba(18, 18, 18, 0.9); 
+        border: 1px solid var(--color-oro);
+        border-radius: 8px;
+        padding: 15px;
+    }
+
+    .inscripciones-table td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: right;
+        padding: 10px 0;
+        border-bottom: 1px solid #333;
+        font-size: 0.9rem;
+        color: #ffffff; 
+    }
+
+    .inscripciones-table td:last-child {
+        border-bottom: none;
+    }
+
+    .inscripciones-table td::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: var(--color-oro);
+        font-family: 'Oswald', sans-serif;
+        font-size: 0.85rem;
+    }
+
+    .inscripciones-table td button {
+        width: auto;
+        font-size: 0.8rem;
+    }
+    
+    .table-wrapper {
+        padding: 10px; 
+        background: transparent; 
+        border: none;
+        box-shadow: none;
+    }
+
+    td[data-label="Contacto"] {
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 8px;
+    }
+
+    td[data-label="Contacto"]::before {
+        align-self: flex-start;
+    }
+
+    td[data-label="Documentos"] div {
+        flex-direction: column;
+        align-items: flex-end;
+        width: 100%;
+    }
+
+    td[data-label="Documentos"]::before {
+        align-self: flex-start;
+    }
+    
+    .email-estilo {
+        margin-bottom: 5px;
+    }
+    
+    .telefono-estilo {
+        margin-top: 5px;
+        padding: 3px 6px;
+        font-size: 0.9rem;
+    }
+
+    .plan-estilo {
+        margin-bottom: 2px;
+    }
+    
+    .objetivo-estilo {
+        margin-top: 2px;
+        line-height: 1.2;
+    }
+    
+    /* MODALES EN MÓVILES */
+    .modal-content {
+        padding: 20px 15px;
+        margin: 10% auto;
+        width: 95%;
+        max-height: 80vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+    
+    .ver-rutina-contenido {
+        padding: 10px;
+        font-size: 0.9em;
+        overflow-x: hidden;
+        word-break: break-word;
+    }
+    
+    .modal-imagen-container {
+        width: 95%;
+        margin: 10% auto;
+        padding: 15px;
+        max-height: 85vh;
+    }
+    
+    .modal-content input[type="text"], 
+    .modal-content textarea {
+        font-size: 16px; 
+        max-width: 100%;
+    }
+    
+    .modal-titulo,
+    .modal-titulo-rutina {
+        padding-right: 30px;
+        font-size: 1.2rem;
+    }
+    
+    .btn-modal {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+    
+    .btn-eliminar-modal {
+        font-size: 0.9rem;
+        padding: 9px 10px;
+    }
+    
+    .botones-contenedor-modal {
+        gap: 8px;
+        margin-top: 15px;
+    }
+    
+    .botones-contenedor-modal .btn-modal {
+        min-height: 42px;
+        font-size: 0.9rem;
+    }
+}
+
+/* PARA PANTALLAS MUY PEQUEÑAS */
+@media screen and (max-width: 480px) {
+    .modal-content {
+        padding: 15px 10px;
+        margin: 5% auto;
+        width: 98%;
+        max-height: 90vh;
+    }
+    
+    .modal-titulo,
+    .modal-titulo-rutina {
+        font-size: 1.1rem;
+        padding-right: 25px;
+    }
+    
+    .modal-content h3 {
+        padding-right: 10px;
+    }
+    
+    .ver-rutina-contenido {
+        padding: 8px;
+        font-size: 0.85em;
+    }
+    
+    .btn-modal {
+        font-size: 0.85rem;
+        padding: 8px;
+        min-height: 40px;
+    }
+    
+    .btn-eliminar-modal {
+        font-size: 0.85rem;
+        padding: 7px 8px;
+    }
+    
+    .botones-contenedor-modal {
+        gap: 6px;
+    }
+    
+    .botones-contenedor-modal .btn-modal {
+        min-height: 38px;
+        font-size: 0.85rem;
+    }
+}
+
+/* ESTILOS ADICIONALES DE SEGURIDAD */
+.modal-content form {
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.modal-content button,
+.modal-content .btn-modal {
+    max-width: 100%;
+    word-wrap: break-word;
+}
+
+.btn-modal span,
+.btn-modal i {
+    max-width: calc(100% - 30px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* =========================================
+   ESTILOS DE FILTROS
+   ========================================= */
+.filtros-container {
+    background: rgba(18, 18, 18, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--color-borde);
+    margin-bottom: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: flex-end;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.filtro-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+    min-width: 200px;
+}
+
+.filtro-grupo label {
+    color: var(--color-oro);
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+.filtro-grupo input, 
+.filtro-grupo select {
+    background: #252525;
+    border: 1px solid #444;
+    color: white;
+    padding: 10px;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.filtro-grupo input:focus, 
+.filtro-grupo select:focus {
+    border-color: var(--color-oro);
+}
+
+.btn-limpiar {
+    background: transparent;
+    border: 1px solid #777;
+    color: #ccc;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    height: 40px;
+    transition: 0.3s;
+}
+
+.btn-limpiar:hover {
+    border-color: var(--color-oro);
+    color: var(--color-oro);
+    background: rgba(255, 215, 0, 0.05);
+}
+
+/* Ajuste móvil para filtros */
+@media screen and (max-width: 768px) {
+    .filtros-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gimnasio de Viviana Woods</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="index_styles.css">
+    
+</head>
+<body>
+
+    <nav id="menu-navegacion">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="logo_gym.png" alt="Logo Viviana Woods" class="nav-logo">
+            </div>
+            <div class="nav-links">
+                <a href="#nosotros">NOSOTROS</a>
+                <a href="#precios">PLANES</a>
+                <a href="#inscripcion">INSCRIPCIÓN</a>
+                <a href="login.php" style="color: var(--color-principal); font-weight: 900;">ADMIN</a>
+            </div>
+        </div>
+    </nav>
+
+    <header>
+        <h1 class="reveal">GIMNASIO<br><span>VIVIANA WOODS</span></h1>
+        <p class="reveal">Entrenamiento personalizado, ambiente familiar y resultados reales.<br>Nos enfocamos 100% en tu desarrollo muscular</p>
+        <a href="#inscripcion" class="btn-accion reveal">EMPEZAR AHORA</a>
+    </header>
+
+    <section id="nosotros" class="reveal">
+        <h2>Entrenamiento Profesional</h2>
+        <div class="info-grid">
+            <div class="info-card">
+                <h3><i class="fas fa-dumbbell"></i> Rutinas Personalizadas</h3>
+                <p>Tu entrenamiento de musculación está en buenas manos. Las rutinas son diseñadas y supervisadas personalmente por <strong>Viviana Woods</strong>, entrenadora profesional y dueña del gimnasio, para asegurar que alcances tus objetivos de forma segura.</p>
+            </div>
+            <div class="info-card">
+                <h3><i class="fas fa-clock"></i> Horarios de Atención</h3>
+                <p><strong>Lunes a Viernes:</strong></p>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 5px;">☀️ Mañana: 07:30 a 10:30 hs</li>
+                    <li>🌙 Tarde/Noche: 13:30 a 21:00 hs</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="precios" class="reveal">
+        <h2>Nuestros Planes Mensuales</h2>
+        <p>Elige tu constancia semanal y ahorra en tu plan.</p>
+        
+        <div class="tabla-precios">
+            <div class="plan reveal">
+                <h3>2 Veces x Semana</h3>
+                <p class="precio">$32.000</p>
+                <p><small>Mensual</small></p>
+            </div>
+            <div class="plan reveal">
+                <h3>3 Veces x Semana</h3>
+                <p class="precio">$35.000</p>
+                <p><small>Mensual</small></p>
+            </div>
+            <div class="plan reveal">
+                <h3>4 Veces x Semana</h3>
+                <p class="precio">$37.000</p>
+                <p><small>Mensual</small></p>
+            </div>
+            <div class="plan reveal">
+                <h3>5 Veces x Semana</h3>
+                <p class="precio">$40.000</p>
+                <p><small>Mensual / Pase Libre</small></p>
+            </div>
+        </div>
+
+        <div class="clase-suelta reveal">
+            <h3>¿Prefieres ir día a día?</h3>
+            <p>Opción de Pase Diario / Clase Suelta:</p>
+            <p>Sin rutina: <span class="precio-mini">$4.000</span> | Con rutina personalizada: <span class="precio-mini">$6.000</span></p>
+        </div>
+    </section>
+
+    <section id="inscripcion" class="reveal">
+        <h2>Inscripción Online</h2>
+        
+    <form id="form-inscripcion" class="form-container" action="procesar.php" method="POST" enctype="multipart/form-data">
+    
+        <div class="form-group">
+            <label for="nombre">NOMBRE Y APELLIDO:</label>
+            <input type="text" id="nombre" name="nombre" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">CORREO ELECTRÓNICO:</label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="ejemplo@gmail.com" required>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div class="form-group">
+                <label for="edad">EDAD:</label>
+                <input type="number" id="edad" name="edad" class="form-control" min="9" max="99" required>
+            </div>
+            <div class="form-group">
+                <label for="telefono">TELÉFONO:</label>
+                <input type="tel" id="telefono" name="telefono" class="form-control" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="plan">SELECCIONA TU PLAN:</label>
+            <select id="plan" name="plan" class="form-control" required>
+                <option value="" disabled selected>-- Elige una opción --</option>
+                <option value="Clase Suelta">Clase Suelta</option>
+                <option value="2 Veces x Semana">2 Veces x Semana</option>
+                <option value="3 Veces x Semana">3 Veces x Semana</option>
+                <option value="4 Veces x Semana">4 Veces x Semana</option>
+                <option value="5 Veces x Semana">5 Veces x Semana (Pase Libre)</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="horarios">DÍAS Y HORARIOS PREFERIDOS:</label>
+            <input type="text" id="horarios" name="horarios" class="form-control" placeholder="Ej: Lunes y miércoles por la tarde" required>
+        </div>
+
+        <div class="form-group">
+            <label for="objetivo">TU OBJETIVO:</label>
+            <textarea id="objetivo" name="objetivo" class="form-control" rows="2" placeholder="Ej: Ganar fuerza, salud..." required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="dni">FOTO DNI:</label>
+            <input type="file" id="dni" name="dni" class="form-control" accept="image/*" required>
+        </div>
+
+        <div class="form-group">
+            <label for="apto">APTO FÍSICO (PDF o Foto):</label>
+            <input type="file" id="apto" name="apto_fisico" class="form-control" accept="image/*,.pdf" required>
+        </div>
+
+        <div class="form-group">
+            <label for="consultas">CONSULTAS (Opcional):</label>
+            <textarea id="consultas" name="consultas" class="form-control" rows="3"></textarea>
+        </div>
+
+        <button type="submit" class="btn-accion" style="width: 100%;">ENVIAR INSCRIPCIÓN</button>
+    </form>
+
+    <div id="mensaje-exito">
+            <i class="fas fa-check-circle"></i>
+            <h3>¡SOLICITUD ENVIADA!</h3>
+            <p>Gracias por registrarte en el Gimnasio de Viviana Woods.</p>
+            <p>Hemos enviado una confirmación a tu correo. Revisaremos tus datos y te contactaremos a la brevedad.</p>
+            <button onclick="location.href='index.html'" class="btn-accion" style="margin-top:20px;">VOLVER</button>
+        </div>
+    </section>
+
+    <section id="ubicacion" class="reveal">
+        <h2>Dónde Estamos</h2>
+        <div class="contenedor-iframe">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3564.938766201114!2d-58.17479892447673!3d-26.18243537710003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94450c6418985c9d%3A0x1314061081016328!2sGonz%C3%A1lez%20Lelong%201045%2C%20P3600%20Formosa!5e0!3m2!1ses!2sar!4v1715798563947!5m2!1ses!2sar" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <h3>CONTACTO</h3>
+                <div class="contact-info">
+                    <p><i class="fas fa-phone"></i> +54 3704 410228</p>
+                    <p><i class="fas fa-envelope"></i> viviwoodsgym@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Av. González Lelong 1045, Formosa</p>
+                </div>
+
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/vivi_woodsgym" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/p/GIMNASIO-DE-VIVIANA-WOODS-100063871890129/" target="_blank"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-logo-container">
+                <img src="logo_letras.png" alt="Logo Gimnasio Footer" class="footer-logo-img">
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>© 2025 Gimnasio de Viviana Woods. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 1. Menú Navbar
+        const nav = document.getElementById('menu-navegacion');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                nav.style.backgroundColor = "rgba(0, 0, 0, 0.95)";
+                nav.style.boxShadow = "0 2px 10px rgba(0,0,0,0.5)";
+                nav.style.padding = "5px 0"; 
+            } else {
+                nav.style.backgroundColor = "transparent";
+                nav.style.boxShadow = "none";
+                nav.style.padding = "10px 0";
+            }
+        });
+
+        // 2. Scroll Reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        });
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+        // 3. LÓGICA DE AVISO DE ÉXITO (Conectada al PHP)
+        const form = document.getElementById('form-inscripcion');
+        const mensajeExito = document.getElementById('mensaje-exito');
+
+        const urlParams = new URLSearchParams(window.location.search);
+        
+        if (urlParams.get('status') === 'success') {
+            form.style.display = 'none'; 
+            mensajeExito.style.display = 'block'; 
+            mensajeExito.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            // Limpiar la URL para que no vuelva a enviar al recargar
+            window.history.replaceState({}, document.title, window.location.pathname);
+        } else if (urlParams.get('status') === 'error') {
+            alert("Hubo un error al enviar el formulario. Por favor verifica los datos o intenta más tarde.");
+        }
+
+        form.addEventListener('submit', function() {
+            const boton = form.querySelector('button[type="submit"]');
+            boton.textContent = "ENVIANDO DATOS...";
+            boton.style.opacity = "0.7";
+        });
+    </script>
+    
+    <div class="whatsapp-flotante">
+        <a href="https://wa.me/+5493704410228" target="_blank" class="whatsapp-link">
+            <i class="fab fa-whatsapp"></i>
+            <span class="whatsapp-tooltip">¡Escríbenos!</span>
+        </a>
+    </div>
+
+</body>
+</html>
